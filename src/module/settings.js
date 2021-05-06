@@ -76,4 +76,19 @@ export const registerSettings = function () {
     config: true,
     onChange: _ => window.location.reload()
   });
+
+  game.settings.register("acks", "diagonalMovement", {
+    name: game.i18n.localize("ACKS.Setting.Diag"),
+    hint: game.i18n.localize("ACKS.Setting.DiagHint"),
+    scope: "world",
+    config: true,
+    default: "555",
+    type: String,
+    choices: {
+      "555": "SETTINGS.DiagPHB",
+      "5105": "SETTINGS.DiagDMG",
+      "EUCL": "SETTINGS.DiagEuclidean",
+    },
+    onChange: rule => canvas.grid.diagonalRule = rule
+  });
 }
